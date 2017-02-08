@@ -1,0 +1,18 @@
+.cs-widget-img {
+	max-height: 14.375rem;
+	width: 100%;
+}
+
+.cs-widget-img-small {
+	max-height: 3.0625rem;
+	width: 4.9375rem;
+	float: left;
+	margin-right: 1.25rem;
+}
+.cs-widget-p {
+	margin: 0;
+	overflow: auto;
+	font-size: 0.8125rem;
+	color: #424242;
+	font-weight: 600;
+}

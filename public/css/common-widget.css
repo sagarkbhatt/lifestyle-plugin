@@ -1,0 +1,85 @@
+
+.widget {
+	margin: 0 0 1.25rem; /* Make sure select elements fit in widgets. */
+}
+
+.widget select {
+	max-width: 100%;
+}
+
+.widget-sidebar {
+	background: #FFFFFF;
+	padding: 1.25rem;
+	clear: both;
+}
+
+/* Search widget. */
+
+.widget_search .search-submit {
+	display: none;
+}
+
+.widget-title {
+	font-size: 1.375rem;
+}
+
+.cs-widget-btn {
+	display: block;
+	background-color: #ffb79b;
+	color: #FFFFFF;
+	height: 2.5rem;
+	text-align: center;
+	margin-top: 1.25rem;
+	line-height: 2.5rem;
+    box-shadow: none !important;
+}
+.cs-widget-img {
+	max-height: 14.375rem;
+	width: 100%;
+}
+
+.cs-widget-img-small {
+	max-height: 3.0625rem;
+	width: 4.9375rem;
+	float: left;
+	margin-right: 1.25rem;
+}
+
+.cs-widget-title {
+	font-size: 1.0625rem;
+	font-weight: 600;
+	color: #424242;
+	margin-bottom: 0.625rem;
+}
+
+.cs-widget-p {
+	margin: 0;
+	overflow: auto;
+	font-size: 0.8125rem;
+	color: #424242;
+	font-weight: 600;
+}
+
+.cs-widget-ps {
+	margin: 0;
+	overflow: auto;
+	font-size: 0.75rem;
+	color: #424242;
+	font-weight: 500;
+}
+
+.column .cs-widget-text {
+	margin-top: 1.25rem;
+	width: 100%;
+	padding: 0.625rem;
+}
+
+.cs-widget-post-slider {
+	width: 14.375rem;
+	height: 9.375rem;
+}
+
+.widget-icon a {
+	padding: 0.3125rem;
+}
+

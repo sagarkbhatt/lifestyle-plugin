@@ -76,6 +76,7 @@ class Lifestyle_Plugin {
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 		$this->load_widgets();
+		$this->create_custom_post_type();
 	}
 
 	/**
@@ -209,7 +210,15 @@ class Lifestyle_Plugin {
 	 * @return    string    The version number of the plugin.
 	 */
 	public function load_widgets() {
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/class-contact-form.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/class-popular-posts.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/class-post-slide.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/class-featured-page.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/class-post-slide-main-action.php';
+
+	}
+	public function create_custom_post_type() {
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/post-type/class-post-slider.php';
 	}
 	public function get_version() {
 		return $this->version;

@@ -29,6 +29,7 @@
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
+define( 'LIFESTYLE_HOME_DIR', plugin_dir_path( dirname( __FILE__ ) ) );
 
 /**
  * The code that runs during plugin activation.

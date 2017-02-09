@@ -32,6 +32,8 @@ class Class_Popular_Post extends WP_Widget {
 	 * Function to display front end
 	 */
 	public function widget( $args, $instance ) {
+		$instance['title']  = ! empty( $instance['title'] ) ? $instance['title'] : ' ';
+		$instance['count']  = ! empty( $instance['count'] ) ? $instance['count'] : '';
 		echo $args['before_widget'];
 		$args_wp = array(
 			'post_type' => 'post',
@@ -41,9 +43,10 @@ class Class_Popular_Post extends WP_Widget {
 			'order' => 'DESC',
 			);
 		$custom_query = new WP_Query( $args_wp );
-		echo '<p class="cs-widget-title">' . strtoupper( $instance['title'] ) . '</p>';
-		echo '<div class="line"></div>';
+
 		if ( $custom_query->have_posts() ) {
+			echo '<p class="cs-widget-title">' . strtoupper( $instance['title'] ) . '</p>';
+			echo '<div class="line"></div>';
 			while ( $custom_query-> have_posts() ) {
 				$custom_query->the_post();
 				if ( has_post_thumbnail() ) {
@@ -101,8 +104,3 @@ function get_count_views() {
 	}
 }
 add_action( 'wp_head', 'get_count_views' );
-function lifestyle_widgets_scripts() {
-	wp_enqueue_style( 'popular-widget-css', plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/css/style.css' );
-}
-add_action( 'wp_enqueue_scripts','lifestyle_widgets_scripts' );
-

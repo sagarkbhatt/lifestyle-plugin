@@ -2,3 +2,6 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+@import 'common-widget.css';
+@import 'slick.css';
+@import "common-footer-widget.css";

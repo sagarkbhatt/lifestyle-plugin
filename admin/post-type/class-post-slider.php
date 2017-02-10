@@ -33,3 +33,4 @@ class Post_Slider {
 
 }
 new Post_Slider();
+include 'gallery.php';

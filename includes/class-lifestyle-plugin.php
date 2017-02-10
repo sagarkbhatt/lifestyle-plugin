@@ -215,7 +215,7 @@ class Lifestyle_Plugin {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/class-post-slide.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/class-featured-page.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/class-post-slide-main-action.php';
-
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/class-social-icon.php';
 	}
 	public function create_custom_post_type() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/post-type/class-post-slider.php';

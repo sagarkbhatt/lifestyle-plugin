@@ -8,6 +8,7 @@
 class Post_Slide_Main_Action {
 	function __construct() {
 		add_action( 'main_slider', array( $this, 'main_slider_callback' ) );
+		add_shortcode( 'main_slider', array( $this, 'main_slider_callback' ) );
 	}
 	function main_slider_callback() {
 		$post = get_theme_mod( 'slidertext','' );

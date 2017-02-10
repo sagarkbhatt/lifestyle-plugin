@@ -33,7 +33,7 @@ class Posts_Slide extends WP_Widget {
 	 * Function to dispay front end
 	 */
 	public function widget( $args, $instance ) {
-
+		$instance['count'] = ! empty( $instance['count'] ) ? $instance['count'] : '';
 		$args_wp = array(
 			'post_type'	=> 'slider',
 			'post_per_page'	=> $instance['count'],

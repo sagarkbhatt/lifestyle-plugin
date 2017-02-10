@@ -27,6 +27,8 @@ class Class_Contact_Form extends WP_Widget {
 	}
 	public function widget( $args, $instance ) {
 		echo $args['before_widget'];
+		$instance['title'] = ! empty( $instance['title'] ) ? $instance['title'] : ' ';
+		$instance['desc']  = ! empty( $instance['desc'] ) ? $instance['desc'] : ' ';
 		echo '<p class="footer-title">' . $instance['title'] . '</p>';
 		echo '<div class="line"></div>';
 		echo '<p class="footer-text">' . $instance['desc'] . '</p>';

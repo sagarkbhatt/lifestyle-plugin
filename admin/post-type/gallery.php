@@ -25,22 +25,26 @@ function gallery_meta_callback( $post ) {
 	$ids = maybe_unserialize( get_post_meta( $post->ID, 'bl_gallery_id', true ) );
 	?>
 	<table class="form-table" id="gallery-metabox">
-	  <tr><td>
-		<a class="gallery-add button" href="#" data-uploader-title="Add image(s) to gallery" data-uploader-button-text="Add image(s)">Add image(s)</a>
+		<tr>
+			<td>
+			<a class="gallery-add button" href="#" data-uploader-title="Add image(s) to gallery" data-uploader-button-text="Add image(s)">Add image(s)</a>
 
-		<ul id="gallery-metabox-list">
-		<?php
-		if ( $ids ) : foreach ( $ids as $key => $value ) : $image = wp_get_attachment_image_src( $value ); ?>
+			<ul id="gallery-metabox-list">
+			<?php
+			if ( $ids ) :
+				foreach ( $ids as $key => $value ) :
+					$image = wp_get_attachment_image_src( $value );
+			?>
 
-		  <li>
+			<li>
 			<input type="hidden" name="bl_gallery_id[<?php echo $key; ?>]" value="<?php echo $value; ?>">
 			<img class="image-preview" src="<?php echo $image[0]; ?>">
 			<a class="change-image button button-small" href="#" data-uploader-title="Change image" data-uploader-button-text="Change image">Change image</a><br>
 			<small><a class="remove-image" href="#">Remove image</a></small>
-		  </li>
+			</li>
 
 		<?php
-		endforeach;
+		    endforeach;
 		endif;
 		?>
 		</ul>
@@ -51,12 +55,15 @@ function gallery_meta_callback( $post ) {
 }
 
 function ga_save_meta( $post_id ) {
-	if ( ! isset( $_POST['gallery_meta_nonce'] ) || ! wp_verify_nonce( $_POST['gallery_meta_nonce'], 'gallery_nonce' ) )
+	if ( ! isset( $_POST['gallery_meta_nonce'] ) || ! wp_verify_nonce( $_POST['gallery_meta_nonce'], 'gallery_nonce' ) ) {
 		return;
-	if ( ! current_user_can( 'edit_post', $post_id ) )
+	}
+	if ( ! current_user_can( 'edit_post', $post_id ) ) {
 		return;
-	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+	}
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return;
+	}
 	if ( isset( $_POST['bl_gallery_id'] ) ) {
 		update_post_meta( $post_id, 'bl_gallery_id', $_POST['bl_gallery_id'] );
 		print_r( $_POST['bl_gallery_id'] );

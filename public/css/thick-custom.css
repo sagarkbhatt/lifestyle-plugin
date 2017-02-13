@@ -1,0 +1,18 @@
+.thick-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background: rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.2)
+}
+.thick-container a {
+    width: calc(100%/3);
+    padding: .5rem;
+}
+.thick-container a img {
+    border: .5rem solid #fff;
+    box-shadow: 0 5px 20px -8px rgba(0, 0, 0,.15);
+}
+.thick-image{
+    height: 488px;
+}

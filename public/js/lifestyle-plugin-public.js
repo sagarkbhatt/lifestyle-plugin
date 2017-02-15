@@ -28,9 +28,18 @@
 	 * Although scripts in the WordPress core, Plugins and Themes may be
 	 * practising this, we should strive to set a better example in our own work.
 	 */
+	var events = [];
 	var lifestyleplugin= {
 		init:function () {
 			this.createSlider();
+        },
+        single: function () {
+            $('.single-item').slick({
+                autoplay: true,
+                autoplaySpeed: 2000,
+                dots: true
+            });
+
         },
         createSlider: function () {
             if ($('.slider').length) {
@@ -72,5 +81,39 @@
         }
     }
     lifestyleplugin.init();
+	function removeThickBoxEvents() {
+        $('.thickbox').each(function(i) {
+            $(this).unbind('click');
+        });
+    }
+    function bindThickBoxEvents() {
+        removeThickBoxEvents();
+        tb_init('a.thickbox, area.thickbox, input.thickbox');
+    }
+    /*$('.thickbox').click( function (e) {
+        e.preventDefault();
+        //if( events[e] != 'set')
+        var post_id = jQuery(this).data('post_id');
+        console.log('inside click' + ajax_url);
+        var data = {
+         'action': 'add_thick_image',
+         'data': post_id
+        }
+        console.log( data );
+        jQuery.post( ajax_url, data, function(response) {
+            //alert(response);
+            console.log( response );
+            var id = '#'+post_id;
+            ///$(id).html( response );
+            $('#TB_ajaxContent').html(response);
+            lifestyleplugin.single();
 
-})( jQuery );
+            }
+
+        );
+
+
+    });
+    */
+
+})( jQuery )

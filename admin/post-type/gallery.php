@@ -22,7 +22,7 @@ add_action( 'add_meta_boxes', 'add_ga_meta_box' );
 
 function gallery_meta_callback( $post ) {
 	wp_nonce_field( 'gallery_nonce', 'gallery_meta_nonce' );
-	$ids = maybe_unserialize( get_post_meta( $post->ID, 'bl_gallery_id', true ) );
+	$ids = maybe_unserialize( get_slider_meta( $post->ID, 'bl_gallery_id', true ) );
 	?>
 	<table class="form-table" id="gallery-metabox">
 		<tr>
@@ -65,10 +65,10 @@ function ga_save_meta( $post_id ) {
 		return;
 	}
 	if ( isset( $_POST['bl_gallery_id'] ) ) {
-		update_post_meta( $post_id, 'bl_gallery_id', $_POST['bl_gallery_id'] );
-		print_r( $_POST['bl_gallery_id'] );
+		update_slider_meta( $post_id, 'bl_gallery_id', $_POST['bl_gallery_id'] );
+		//print_r( $_POST['bl_gallery_id'] );
 	} else {
-		delete_post_meta( $post_id, 'bl_gallery_id' );
+		delete_slider_meta( $post_id, 'bl_gallery_id' );
 	}
 
 }

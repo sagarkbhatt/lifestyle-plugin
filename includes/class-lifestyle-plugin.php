@@ -57,6 +57,8 @@ class Lifestyle_Plugin {
 	 */
 	protected $version;
 
+	static $table_name = 'slidermeta';
+
 	/**
 	 * Define the core functionality of the plugin.
 	 *
@@ -77,6 +79,7 @@ class Lifestyle_Plugin {
 		$this->define_public_hooks();
 		$this->load_widgets();
 		$this->create_custom_post_type();
+		$this->load_wrapper();
 	}
 
 	/**
@@ -222,6 +225,10 @@ class Lifestyle_Plugin {
 	}
 	public function get_version() {
 		return $this->version;
+	}
+	public function load_wrapper() {
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/slider-meta-functions.php';
+
 	}
 
 }

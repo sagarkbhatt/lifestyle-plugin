@@ -79,7 +79,8 @@ class Post_Slide_Main_Action {
 						$this->display_post_main_slider_single( get_the_ID() );
 						echo '</div>';
 						$url = wp_get_attachment_url( get_post_thumbnail_id(), 'thumbnail' );
-						echo '<a href="#TB_inline?width=600&height=550&inlineId=' . get_the_ID() . '" class="thickbox custom-thickbox"><img src= "' . $url . '" class="inline-image" /></a>';
+						echo '<a href="#TB_inline?width=600&height=550&inlineId=' . get_the_ID() . '" class="thickbox custom-thickbox" data-post_id="' . get_the_ID() . '"><img src= "' . $url . '" class="inline-image" /></a>';
+						//echo '<div clas="div-thickbox" data-post_id="' . get_the_ID() . '" ><a href=#TB_inline?width=600&height=550&inlineId=' . get_the_ID() . '" class="thickbox custom-thickbox" data-post_id="' . get_the_ID() . '"><img src= "' . $url . '" class="inline-image" /></a></div>';
 					}
 				}
 				echo '</div>';
@@ -136,3 +137,41 @@ class Post_Slide_Main_Action {
 	}
 }
 new Post_Slide_Main_Action();
+
+add_action( 'admin_enqueue_scripts', 'my_enqueue' );
+function my_enqueue( $hook ) {
+
+	if ( 'index.php' != $hook ) {
+		// Only applies to dashboard panel
+		return;
+	}
+
+	// in JavaScript, object properties are accessed as ajax_object.ajax_url, ajax_object.we_value
+
+}
+
+add_action( 'wp_ajax_add_thick_image', 'lf_ajax_thick_image' );
+add_action( 'wp_ajax_nopriv_add_thick_image', 'lf_ajax_thick_image' );
+
+function lf_ajax_thick_image() {
+	$images = get_post_meta( $_POST['data'], 'bl_gallery_id', true );
+	ob_start();
+	if ( ! empty( $images ) ) {
+
+		echo '<section class="single-item">';
+		foreach ( $images as $image ) {
+			$url = wp_get_attachment_url( $image, 'full' );
+			echo '<div>';
+			echo '<img src="' . esc_url( $url ) . '" class="thick-image"/>';
+			echo '</div>';
+		}
+		echo '</section>';
+
+
+	} else {
+		echo '<p>No images are available</p>';
+	}
+	$temp = ob_get_clean();
+	echo $temp;
+	wp_die();
+}

@@ -101,6 +101,7 @@ class Lifestyle_Plugin_Public {
 		wp_register_script( $this->plugin_name . '-slick', plugin_dir_url( __FILE__ ) . 'js/vendor/slick.js', array( 'jquery' ), $this->version, true );
 		wp_register_script( $this->plugin_name . '-main', plugin_dir_url( __FILE__ ) . 'js/lifestyle-plugin-public.js', array( 'jquery', $this->plugin_name . '-nav', $this->plugin_name . '-mm', $this->plugin_name . '-slick' ), $this->version, true );
 		wp_enqueue_script( $this->plugin_name . '-main' );
+		wp_localize_script( $this->plugin_name . '-main', 'ajax_url', admin_url( 'admin-ajax.php' ) );
 		//wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/lifestyle-plugin-public.js', array( 'jquery' ), $this->version, false );
 
 	}

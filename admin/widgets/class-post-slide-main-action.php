@@ -13,7 +13,7 @@ class Post_Slide_Main_Action {
 	function main_slider_callback() {
 		$post = get_theme_mod( 'slidertext','' );
 		if ( $post ) {
-			$images = get_post_meta( $post, 'bl_gallery_id', true );
+			$images = get_slider_meta( $post, 'bl_gallery_id', true );
 			if ( ! empty( $images ) ) {
 				echo '<div class="large-12 small-12 column">';
 				echo '<section class="slider-for">';
@@ -43,10 +43,10 @@ class Post_Slide_Main_Action {
 	}//end of function
 	function main_slider_shortcode_callback( $atts, $content, $tag ) {
 		ob_start();
-		$post = '';
+		$post = null;
 		$a = shortcode_atts( array(
-			'id' => '',
-			'slug' => '',
+			'id' => null,
+			'slug' => null,
 		), $atts );
 		if ( isset( $a['id'] ) ) {
 			$post = $a['id'];
@@ -58,7 +58,7 @@ class Post_Slide_Main_Action {
 			}
 		}
 
-		if ( $post ) {
+		if ( ! empty( $post ) ) {
 			$this->display_post_main_slider( $post );
 
 		} else {
@@ -89,7 +89,7 @@ class Post_Slide_Main_Action {
 		return ob_get_clean();
 	}
 	function display_post_main_slider( $post ) {
-		$images = get_post_meta( $post, 'bl_gallery_id', true );
+		$images = get_slider_meta( $post, 'bl_gallery_id', true );
 		if ( ! empty( $images ) ) {
 			echo '<div class="large-12 small-12 column">';
 			echo '<section class="slider-for">';
@@ -118,7 +118,7 @@ class Post_Slide_Main_Action {
 	}
 
 	function display_post_main_slider_single( $post ) {
-		$images = get_post_meta( $post, 'bl_gallery_id', true );
+		$images = get_slider_meta( $post, 'bl_gallery_id', true );
 		if ( ! empty( $images ) ) {
 
 			echo '<section class="single-item">';
@@ -154,7 +154,7 @@ add_action( 'wp_ajax_add_thick_image', 'lf_ajax_thick_image' );
 add_action( 'wp_ajax_nopriv_add_thick_image', 'lf_ajax_thick_image' );
 
 function lf_ajax_thick_image() {
-	$images = get_post_meta( $_POST['data'], 'bl_gallery_id', true );
+	$images = get_slider_meta( $_POST['data'], 'bl_gallery_id', true );
 	ob_start();
 	if ( ! empty( $images ) ) {
 

@@ -80,6 +80,7 @@ class Lifestyle_Plugin {
 		$this->load_widgets();
 		$this->create_custom_post_type();
 		$this->load_wrapper();
+		$this->short_code();
 	}
 
 	/**
@@ -219,6 +220,8 @@ class Lifestyle_Plugin {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/class-featured-page.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/class-post-slide-main-action.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/widgets/class-social-icon.php';
+	}
+	public function short_code() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/short-code/fetch-currency.php';
 	}
 	public function create_custom_post_type() {
